@@ -1,0 +1,260 @@
+// $mobile: "(max-width: 500px)";
+// $smalltablet: "(min-width: 500px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 1023px)";
+$desktop: "(min-width: 1024px)";
+$greaterThenMobile: "(min-width: 500px)";
+$font-size: 14px;
+
+// @mixin smalltablet() {
+//     @media #{$tablet}{
+//         @content;
+//     }
+// }
+
+@mixin tablet() {
+    @media #{$tablet}{
+        @content;
+    }
+}
+
+@mixin desktop() {
+    @media #{$desktop}{
+        @content;
+    }
+}
+
+@mixin greaterThenMobile() {
+    @media #{$greaterThenMobile}{
+        @content;
+    }
+}
+
+// ================== przerobić mixin na gradient ==================
+@mixin liBorderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@function highten($value) {
+    @return 2px + $value;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: sans-serif;
+    font-size: #{$font-size};   //wartość dla mobile
+    @include tablet {
+        font-size: highten($font-size); //wartość dla tablet
+    }
+    @include desktop {
+        font-size: highten(highten($font-size)); //wartość dla desktop
+    };
+}
+
+// Main layout
+.main-layout {
+    // body
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+    // font-size: 1.2em;
+    margin: 0;
+}
+
+    .header, .footer {
+        flex: 0;
+        // background: #50A3C3;
+        background: black;
+        color: white;
+    }
+
+    // .footer {
+    //     flex: 0 0 100px;
+    //     // background: #50A3C3;
+    //     background: black;
+    //     color: white;
+    // }
+
+
+    .middle-section {
+        display:flex;
+        flex: 1;
+        flex-direction: column;
+        // background: #f7f7f7;
+
+        @include greaterThenMobile {
+            flex-direction: row;
+        }
+
+    }
+
+    .main {
+        flex: 1;
+        // background: #FFEE98;
+        background-color: lightgray;
+        display:flex;
+        justify-content: center;
+    	align-items: center;
+    }
+
+    .sidebar {
+        flex: 0 0 12rem;
+        background-color: black;
+        color: white;
+
+
+
+
+    }
+    // .h-gray-ads {
+    //     flex: 0 0 10em;
+    // }
+// }
+
+// Nwigacja - Hamburger
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include greaterThenMobile {
+        flex-direction: row;
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    @include greaterThenMobile {
+        flex: 0 0 12rem;
+    }
+}
+
+.logo p {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.nav-button {
+    // font-size: 1.5em;
+    font-size: 1.2rem;
+    // padding: 0.4em;
+    padding: 1rem;
+}
+
+.nav-ul {
+    display:flex;
+    // flex-direction: row;
+    flex-direction: column;
+
+    list-style-type: none;
+    // background: cornflowerblue;
+    background: black;
+    color: white;
+    // padding: 1em;
+
+    @include greaterThenMobile {
+        flex-direction: row;
+    }
+
+    // @include smalltablet {
+    //     flex-direction: row;
+    // }
+    //
+    // @include tablet {
+    //     flex-direction: row;
+    // }
+    //
+    // @include desktop {
+    //     flex-direction: row;
+    // }
+}
+
+.nav-li {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-a {
+    color: #fff;
+    text-decoration: none;
+    // padding: 15px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    display: block;
+}
+
+.hidden-btn {
+    display: none;
+}
+
+// .nav-mobile {
+//     display: flex;
+//     flex-direction: column;
+// }
+
+.hidden-nav  {
+    display: none;
+}
+
+.filter, .values-list {
+    display:flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.filter li {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    text-align: center;
+    border: 1px solid gray;
+}
+.category, .filter-btn {
+    border: 1px solid gray;
+}
+.category-title, .filter-btn-title {
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-weight: normal;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.values-list {
+    padding: 0 1rem;
+}
+
+.checked {
+    background-color: red;
+}
+
+.text-color {
+    color: red;
+}
+
+
+
+.footer p {
+    padding: 1rem;
+}
+
+// @media (min-width: 201px) and (max-width: 500px) {
+//     .nav-ul {
+//         flex-direction: column;
+//
+//     }
+// }
+
+// @media (min-width: 500px) {
+//     .nav-ul {
+//         flex-direction: row;
+//     }
+//
+// }
