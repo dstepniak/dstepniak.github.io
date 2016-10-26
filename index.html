@@ -14,9 +14,13 @@
         <div class="container">
             <!-- <div class="container-inside"> -->
                 <div class="logo">
-                    <p>
+                    <h3>
                         LOGO
-                    </p>
+                    </h3>
+                    <div class="nav-button hidden-btn">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        <!-- ikona pobrana ze strony http://fontawesome.io/icon/bars/ -->
+                    </div>
                 </div>
                 <!-- <div class="nav-button hidden-btn">
                     <i class="fa fa-bars" aria-hidden="true"></i> -->
@@ -25,6 +29,7 @@
             <!-- </div> -->
 
             <nav class="nav">
+
                 <ul class="nav-ul">
                     <li class="nav-li"><a href="#" class="nav-a">menu1</a></li>
                     <li class="nav-li"><a href="#" class="nav-a">menu2</a></li>
@@ -38,67 +43,67 @@
 
     <section class="middle-section">
         <section class="sidebar">
-            <div class="filter-btn">
+            <div id="filter-btn" class="filter-btn">
                 <h3 class="filter-btn-title">Filtruj produkty</h3>
             </div>
             <div class="filter">
                 <div class="category">
                     <h3 class="category-title">Marki</h3>
                     <ul class="values-list">
-                        <li class="values">Marka 1</li>
-                        <li class="values">Marka 2</li>
-                        <li class="values">Marka 3</li>
+                        <li class="values" data-category="brand" data-value="brand1">Marka 1</li>
+                        <li class="values" data-category="brand" data-value="brand2">Marka 2</li>
+                        <li class="values" data-category="brand" data-value="brand3">Marka 3</li>
                     </ul>
                 </div>
                 <div class="category">
                     <h3 class="category-title">Damski/Męski</h3>
                     <ul class="values-list">
-                        <li class="values">Damski</li>
-                        <li class="values">Męski</li>
+                        <li class="values" data-category="sex" data-value="female">Damski</li>
+                        <li class="values" data-category="sex" data-value="male">Męski</li>
                     </ul>
                 </div>
                 <div class="category">
-                    <h3 class="category-title">Cena</h3>
+                    <h3 id="price-title" class="category-title">Cena</h3>
                     <ul class="values-list">
-                        <li class="values">xx</li>
-                        <li class="values">xx</li>
+                        <li class="values price min-price" data-category="price" data-value=""><label>Cena minimalna: <input id="min" type="number" name="min" value=""></label></li>
+                        <li class="values price max-price" data-category="price" data-value=""><label>Cena maksymalna: <input id="max" type="number" name="max" value=""></label></li>
                     </ul>
                 </div>
                 <div class="category">
                     <h3 class="category-title">Kolor</h3>
                     <ul class="values-list">
-                        <li class="values">Biały</li>
-                        <li class="values">Czarny</li>
-                        <li class="values">Beżowy</li>
-                        <li class="values">Granatowy</li>
-                        <li class="values">Stalowy</li>
-                        <li class="values">Złoty</li>
+                        <li class="values" data-category="color" data-value="white">Biały</li>
+                        <li class="values" data-category="color" data-value="black">Czarny</li>
+                        <li class="values" data-category="color" data-value="beige">Beżowy</li>
+                        <li class="values" data-category="color" data-value="blue">Granatowy</li>
+                        <li class="values" data-category="color" data-value="steel">Stalowy</li>
+                        <li class="values" data-category="color" data-value="golden">Złoty</li>
                     </ul>
                 </div>
                 <div class="category">
                     <h3 class="category-title">Pasek</h3>
                     <ul class="values-list">
-                        <li class="values">Skóra</li>
-                        <li class="values">Tworzywo</li>
-                        <li class="values">Stal</li>
+                        <li class="values" data-category="strap" data-category="strap" data-value="leather">Skóra</li>
+                        <li class="values" data-category="strap" data-value="rubber">Tworzywo</li>
+                        <li class="values" data-category="strap" data-value="steel">Stal</li>
                     </ul>
                 </div>
                 <div class="category">
                     <h3 class="category-title">Mechanizm</h3>
                     <ul class="values-list">
-                        <li class="values">Kwarcowy</li>
-                        <li class="values">Mechaniczny</li>
+                        <li class="values" data-category="mechanism" data-value="quarc">Kwarcowy</li>
+                        <li class="values" data-category="mechanism" data-value="mech">Mechaniczny</li>
                     </ul>
                 </div>
                 <div class="category">
                     <h3 class="category-title">Wodoszczelność</h3>
                     <ul class="values-list">
-                        <li class="values">30m</li>
-                        <li class="values">50m</li>
-                        <li class="values">100m</li>
-                        <li class="values">200m</li>
-                        <li class="values">300m</li>
-                        <li class="values">500m</li>
+                        <li class="values" data-category="waterproff" data-value="30m">30m</li>
+                        <li class="values" data-category="waterproff" data-value="50m">50m</li>
+                        <li class="values" data-category="waterproff" data-value="100m">100m</li>
+                        <li class="values" data-category="waterproff" data-value="200m">200m</li>
+                        <li class="values" data-category="waterproff" data-value="300m">300m</li>
+                        <li class="values" data-category="waterproff" data-value="500m">500m</li>
                     </ul>
                 </div>
             </div>
@@ -106,9 +111,52 @@
         <main class="main">
 
         	<div class="gallery">
-        	 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates error omnis culpa recusandae deleniti, optio harum vero quos consequuntur quis. Excepturi numquam repellendus quos ipsa, quis tenetur esse debitis commodi.
+                <div class="product" data-brand="brand1" data-sex="female" data-price="230" data-color="white" data-strap="leather" data-mechanism="quarc" data-waterproff="50m">
+                    <figure><img src="images/200x200/makieta-01_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand3" data-sex="male" data-price="1050" data-color="black" data-strap="leather" data-mechanism="quarc" data-waterproff="200m">
+                    <figure><img src="images/200x200/makieta-02_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand2" data-sex="female" data-price="320" data-color="steel" data-strap="steel" data-mechanism="quarc" data-waterproff="50m">
+                    <figure><img src="images/200x200/makieta-03_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand1" data-sex="male" data-price="450" data-color="steel" data-strap="steel" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-04_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand1" data-sex="male" data-price="430" data-color="golden" data-strap="steel" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-05_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand2" data-sex="female" data-price="290" data-color="golden" data-strap="steel" data-mechanism="quarc" data-waterproff="50m">
+                    <figure><img src="images/200x200/makieta-06_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand2" data-sex="female" data-price="540" data-color="golden" data-strap="steel" data-mechanism="quarc" data-waterproff="50m">
+                    <figure><img src="images/200x200/makieta-07_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand3" data-sex="female" data-price="520" data-color="black" data-strap="leather" data-mechanism="quarc" data-waterproff="100m">
+                    <figure><img src="images/200x200/makieta-08_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand2" data-sex="male" data-price="620" data-color="blue" data-strap="leather" data-mechanism="quarc" data-waterproff="200m">
+                    <figure><img src="images/200x200/makieta-09_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand3" data-sex="female" data-price="550" data-color="steel" data-strap="leather" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-10_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand1" data-sex="male" data-price="760" data-color="steel" data-strap="steel" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-11_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand2" data-sex="female" data-price="360" data-color="golden" data-strap="steel" data-mechanism="quarc" data-waterproff="50m">
+                    <figure><img src="images/200x200/makieta-12_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand3" data-sex="female" data-price="125" data-color="white" data-strap="leather" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-13_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand3" data-sex="male" data-price="99" data-color="black" data-strap="leather" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-14_200.jpg" alt="zegarek" /></figure>
+                </div>
+                <div class="product" data-brand="brand2" data-sex="male" data-price="390" data-color="golden" data-strap="steel" data-mechanism="quarc" data-waterproff="30m">
+                    <figure><img src="images/200x200/makieta-15_200.jpg" alt="zegarek" /></figure>
+                </div>
         	</div>
-
         </main>
         <!-- <aside class="h-gray-ads">Aside</aside> -->
     </section>
