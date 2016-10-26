@@ -121,7 +121,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // ===============================================================
 
     var products = $(".product");
+    var filterIsRunning = false;
 
+    // Zasunięcie pól filtra
     function hideFilterValues() {
         // console.log($(".values-list"));
         $(".values-list").hide(0);
@@ -134,6 +136,94 @@ document.addEventListener("DOMContentLoaded", function(event) {
             $(this).next().slideToggle();
         });
     }
+
+    // funkcja sparawdzająca czy jakaś kategoria jest zanaczona
+
+    // funkcja filtrująca po marce
+    function brandFilter() {
+        if (filterIsRunning) {
+            products = $(".product.picked");
+        }
+        var h3Element = $("#brand-title");
+        var liElements = h3Element.next().children();
+        var x = [];
+        var noCategoryIsSelected = true;
+        var categories = $(".category-title");
+
+        categories.each(function(index, category) {
+            if ($(category).hasClass("checked")) {
+                console.log("zaznaczony");
+                noCategoryIsSelected = false;
+                // break;
+            }
+        });
+
+
+        if(noCategoryIsSelected) {
+            console.log("nic nie jest wybrane");
+            products.removeClass("hidden");
+        } else {
+
+            liElements.each(function(index, element) {
+                if ($(element).hasClass("checked")) {
+                    console.log($(element).data("value"));
+                    x.push($(element).data("value"));
+                }
+            });
+            console.log(x);
+
+            products.each(function(index, product) { // pętla po wszystkich produktach
+                var flag = false;
+                for (var i = 0; i < x.length; i++) {
+                    if (x[i] === $(product).data("brand")) {
+                        flag = true;
+                    }
+                }
+                if (flag === true) {
+                    $(product).removeClass("hidden");
+                    $(product).addClass("picked"); // nadaje klasę wybranym produktom
+                }
+                else {
+                    $(product).addClass("hidden"); // ukrywa produkt, który nie spełnia warunku
+                    $(product).removeClass("picked");
+                }
+            });
+        }
+    }
+
+    // funkcja filtrująca po płci
+
+
+    // funkcja filtrująca po cenie
+
+    // funkcja filtrująca po kolorze
+
+    // funkcja filtrująca po pasku
+
+    // funkcja filtrująca po mechaniźmie
+
+    // funkcja filtrująca po wodoszczelności
+
+    // funkcja sprawdzająca, która kategoria jest zaznaczona
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Obsługa filtra cena
     $("input").on("change", function() {
@@ -156,21 +246,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         });
 
-
-        // // console.log("input");
-        // // console.log($(this).val());
-        // var li = $(this).parent().parent();
-        //
-        //
-        // $(li).attr("data-value", $(this).val())
-        // // console.log($(this).parent().parent());
-        // // console.log($(li).attr("data-value"));
-        // if ($(li).attr("data-value") !== "") {  // jeżeli data set jest ustawiony
-        //     $(li).addClass("checked"); // zaznaczenie opcji
-        // }
-        // else {
-        //     $(li).removeClass("checked"); // odznaczenie opcji
-        // }
         checkCategory($(".price-title"));
         filterProducts(); // wywołanie funkcji filtrowania produktów
     });
@@ -202,68 +277,50 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         checkCategory($(this));
 
-        filterProducts(); // wywołanie funkcji filtrowania produktów
+        brandFilter();
+
+        // filterProducts(); // wywołanie funkcji filtrowania produktów
     });
 
 
-    // console.log($(".filter-btn"));
+
     // Rozsuwanie filtra w wersji mobile
     $(".filter-btn").on("click", function() {
         $(this).next().slideToggle();
-
-        // $(".values-list").each(function(index, value) {
-        //     $(this).slideUp();
-        // });
-        // $(".values").each(function(index, value) {
-        //     $(this).removeClass("checked");
-        // });
     });
 
 
     // filtrowanie produktów
     function filterProducts() {
-        var values = $(".values");
-        var categories = $(".category-title");
-        var noCategoryIsChecked = true;
-        // console.log(categories);
-        // console.log(products);
+        // var noCategoryIsChecked = true;
 
-        $(categories).each(function(index, value) { // pętla po kategoriach
+        // $(products).addClass("hidden"); // ukrycie wszystkich produktów
 
-            if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
-                noCategoryIsChecked = false;
-                var categoryValues = $(this).next().children(); // pobranie elementów li z danej kategorii
+        $(products).each(function(index, product) { // pętla po wszystkich produktach
+            var categories = $(".category-title");
 
-                $(products).addClass("hidden"); // ukrycie wszystkich produktów
+            $(categories).each(function(index, value) { // pętla po kategoriach
 
-                // console.log(categoryValues);
-                // dla każdego elementu li z danej kategorii
-                $(categoryValues).each(function(index, value) {
-                    if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
-                        var category = $(value).data("category"); // pobranie nazwy kategorii z data set (string)
-                        var categoryVal = $(value).data("value"); // pobranie vartości danej kategorii z data set (string)
-                        var li = $(value);
-                        // console.log(category);
-                        // console.log(categoryVal);
-                        $(products).each(function(index, product) { // pętla przez wszystkie produkty
-                            console.log($(product));
-                            // console.log(category);
-                            console.log($(product).data(category));
-                            // console.log(categoryVal);
+                if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
+                    noCategoryIsChecked = false;
 
-                            // Pierwsze filtrowanie (bez ceny) - pokazuje pridukty spełniające warunki filtrowania
-                            if ((category !== "price") && ($(product).data(category) === categoryVal)) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
-                                        $(product).removeClass("hidden"); // pokazuje produkty
+                    var categoryValues = $(this).next().children(); // pobranie elementów li z danej kategorii
+
+                    $(categoryValues).each(function(index, value) { // pętla po wartościach kategorii
+                        if ($(value).hasClass("checked")) { // jeżeli wartość kategorii jest zaznaczona
+                            var category = $(value).data("category"); // pobranie nazwy kategorii z data set (string)
+                            var categoryVal = $(value).data("value"); // pobranie vartości danej kategorii z data set (string)
+
+
+                            // Jeżeli kategoria nie jest ceną - ukrywa produkty nie spełniające warunków filtrowania
+                            if (category !== "price") {
+                                if (($(product).data(category) !== categoryVal)) { // jeżeli wartość kategorii produktu pobrana z data set, nie jest równa zaznaczonej kategorii
+                                    $(product).addClass("hidden"); // ukrywa produkt
+                                }
                             }
 
-                            // Drugie filtrowanie (cena) - spośród odfiltrowanych ukrywa prodkty, które nie spełniają warunków
-                            if ((category === "price") && !($(product).hasClass("hidden"))) {
-                                // console.log("produkt" + $(product).data(category));
-                                // console.log("zaznaczony" + categoryVal);
-                                // if(($(product).data(category) <= )
+                            else { // Jeżeli kategoria jest ceną - ukrywa produkty nie spełniające warunków filtrowania
 
-                                // console.log($(".min-price").attr("data-value"));
-                                // console.log($(".max-price").attr("data-value"));
                                 var min = $(".min-price").attr("data-value");
                                 var max = $(".max-price").attr("data-value");
                                 if (min === "") {
@@ -276,27 +333,164 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
                                     $(product).addClass("hidden"); // ukrywa produkty, które nie spełniają warunków filtra
                                 }
-
-
-
-
-                                // if ((($(product).data(category) <= categoryVal) && $(li).hasClass("max-price"))) {
-                                //
-                                //     $(product).removeClass("hidden"); // pokazuje produkty
-                                // }
-                                // else if ((($(product).data(category) >= categoryVal) && $(li).hasClass("min-price"))) {
-                                //
-                                //     $(product).removeClass("hidden"); // pokazuje produkty
-                                // }
-
-                                // if ((($(product).data(category) >= categoryVal) && $(li).hasClass("min-price")) &&  (($(product).data(category) <= categoryVal) && $(li).hasClass("max-price")) ) {
-                                //     $(product).removeClass("hidden"); // pokazuje produkty
-                                // }
                             }
-                            // else if ($(product).data(category) === categoryVal) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
-                            //         $(product).removeClass("hidden"); // pokazuje produkty
-                            //
-                            // }
+                        }
+                    });
+                }
+            });
+        });
+        if(noCategoryIsChecked) {   // jeżeli żadna kategoria nie została zaznaczona
+                $(products).removeClass("hidden"); // pokarz wszystkie produkty
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function filterProducts() {
+    //     var values = $(".values");
+    //     var categories = $(".category-title");
+    //     var noCategoryIsChecked = true;
+    //
+    //     $(categories).each(function(index, value) { // pętla po kategoriach
+    //
+    //         if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
+    //             noCategoryIsChecked = false;
+    //             var categoryValues = $(this).next().children(); // pobranie elementów li z danej kategorii
+    //
+    //             $(products).addClass("hidden"); // ukrycie wszystkich produktów
+    //
+    //
+    //             // dla każdego elementu li z danej kategorii
+    //             $(categoryValues).each(function(index, value) {
+    //                 if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
+    //                     var category = $(value).data("category"); // pobranie nazwy kategorii z data set (string)
+    //                     var categoryVal = $(value).data("value"); // pobranie vartości danej kategorii z data set (string)
+    //                     var li = $(value);
+    //
+    //                     $(products).each(function(index, product) { // pętla przez wszystkie produkty
+    //                         // console.log($(product));
+    //                         // console.log(category);
+    //                         // console.log($(product).data(category));
+    //                         // console.log(categoryVal);
+    //
+    //                         // Pierwsze filtrowanie (bez ceny) - pokazuje produkty spełniające warunki filtrowania
+    //                         if ((category !== "price") && ($(product).data(category) === categoryVal)) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
+    //                                     $(product).removeClass("hidden"); // pokazuje produkty
+    //                         }
+    //
+    //                         // Drugie filtrowanie (cena) - spośród odfiltrowanych ukrywa prodkty, które nie spełniają warunków
+    //                         if ((category === "price") && !($(product).hasClass("hidden"))) {
+    //                             // console.log("produkt" + $(product).data(category));
+    //                             // console.log("zaznaczony" + categoryVal);
+    //                             // if(($(product).data(category) <= )
+    //
+    //                             // console.log($(".min-price").attr("data-value"));
+    //                             // console.log($(".max-price").attr("data-value"));
+    //                             var min = $(".min-price").attr("data-value");
+    //                             var max = $(".max-price").attr("data-value");
+    //                             if (min === "") {
+    //                                 min = 0;
+    //                             }
+    //                             if (max == "") {
+    //                                 max = 100000;
+    //                             }
+    //                             if ( ($(product).data(category) > max) && ($(product).data(category) < min) ) {
+    //
+    //                                 $(product).addClass("hidden"); // ukrywa produkty, które nie spełniają warunków filtra
+    //                             }
+    //
+    //
+    //
+    //
+    //                             // if ((($(product).data(category) <= categoryVal) && $(li).hasClass("max-price"))) {
+    //                             //
+    //                             //     $(product).removeClass("hidden"); // pokazuje produkty
+    //                             // }
+    //                             // else if ((($(product).data(category) >= categoryVal) && $(li).hasClass("min-price"))) {
+    //                             //
+    //                             //     $(product).removeClass("hidden"); // pokazuje produkty
+    //                             // }
+    //
+    //                             // if ((($(product).data(category) >= categoryVal) && $(li).hasClass("min-price")) &&  (($(product).data(category) <= categoryVal) && $(li).hasClass("max-price")) ) {
+    //                             //     $(product).removeClass("hidden"); // pokazuje produkty
+    //                             // }
+    //                         }
+    //                         // else if ($(product).data(category) === categoryVal) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
+    //                         //         $(product).removeClass("hidden"); // pokazuje produkty
+    //                         //
+    //                         // }
+    //
+    //                     });
+    //                 }
+    //             });
+    //         }
+    //     });
+    //     if(noCategoryIsChecked) {   // jeżeli żadna kategoria nie została zaznaczona
+    //         $(products).removeClass("hidden"); // pokarz wszystkie produkty
+    //     }
+    // }
+
+
+
+
+
+    var noCategoryIsChecked = true;
+    function filterProducts() {
+        var values = $(".values");
+        var categories = $(".category-title");
+
+        if (noCategoryIsChecked) {
+            $(products).removeClass("hidden"); // pokazanie wszystkich produktów
+        }
+        $(categories).each(function(index, value) { // pętla po kategoriach
+
+            if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
+                noCategoryIsChecked = false;
+                var categoryValues = $(this).next().children(); // pobranie elementów li z danej kategorii
+
+                // dla każdego elementu li z danej kategorii
+                $(categoryValues).each(function(index, value) {
+                    if ($(value).hasClass("checked")) { // jeżeli kategoria jest zaznaczona
+                        var category = $(value).data("category"); // pobranie nazwy kategorii z data set (string)
+                        var categoryVal = $(value).data("value"); // pobranie vartości danej kategorii z data set (string)
+                        var li = $(value);
+
+                        $(products).each(function(index, product) { // pętla przez wszystkie produkty
+                            // console.log($(product));
+                            // console.log(category);
+                            // console.log($(product).data(category));
+                            // console.log(categoryVal);
+
+                            // Pierwsze filtrowanie (bez ceny) - ukrywa produkty nie spełniające warunków filtrowania
+                            if (category !== "price") {
+                                if ($(product).data(category) !== categoryVal) { // jeżeli wartość kategorii produktu pobrana z data set, nie jest równa zaznaczonej kategorii
+                                    $(product).addClass("hidden"); // ukrywa produkty
+                                }
+                            }
+                            else { // Drugie filtrowanie (cena) -  ukrywa prodkty, które nie spełniają warunków
+                                var min = $(".min-price").attr("data-value");
+                                var max = $(".max-price").attr("data-value");
+                                if (min === "") {
+                                    min = 0;
+                                }
+                                if (max == "") {
+                                    max = 100000;
+                                }
+                                if ( ($(product).data(category) > max) && ($(product).data(category) < min) ) {
+
+                                    $(product).addClass("hidden"); // ukrywa produkty, które nie spełniają warunków filtra
+                                }
+                            }
 
                         });
                     }
@@ -308,9 +502,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    function hideAllProducts() {
-
-    }
+    // function hideAllProducts() {
+    //
+    // }
 
     hideFilterValues();
     filterSlideHandler();
