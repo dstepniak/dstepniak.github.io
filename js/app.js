@@ -120,8 +120,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // ===============================================================
 
-    var products = $(".product");
-    var filterIsRunning = false;
+    // var products = $(".product");
+    // var filterIsRunning = false;
 
     // Zasunięcie pól filtra
     function hideFilterValues() {
@@ -137,7 +137,263 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
     }
 
-    // funkcja sparawdzająca czy jakaś kategoria jest zanaczona
+
+    // Zmienne
+    var products = document.querySelectorAll(".product");
+    var brandsArray = [];
+    var sexArray = [];
+    var pricesArray = [];
+    var colorsArray = [];
+    var strapsArray = [];
+    var mechArray = [];
+    var wproofArray = [];
+
+    // Funkcje pobierające wybrane wartości kategorii z filtra
+    function getCatagoryValues(h3Element) {
+        var liElements = $(h3Element).next().children();
+        var tab = [];
+
+        liElements.each(function(index, element) {
+            if ($(element).hasClass("checked")) {
+                // console.log($(element).data("value"));
+                $(tab).push($(element).data("value"));
+            }
+        });
+        console.log(tab);
+        return tab;
+    }
+    // Funkcja pobierająca wartości ceny
+    function getPrices() {
+        var h3Element = $("#price-title");
+        var liElements = h3Element.next().children();
+        var tab = [];
+        var priceIsChecked = false;
+
+        liElements.each(function(index, element) {
+            if ($(element).hasClass("checked")) {
+                var priceIsChecked = false;
+            }
+        });
+
+        if (priceIsChecked) {
+            var min = $(liElements[0]).data("value");
+            var max = $(liElements[1]).data("value");
+            if (isNaN(min) || isNaN(max)) {
+                return tab;
+            }
+            if (min === "") {
+                min = 0;
+            }
+            if (max == "") {
+                max = 100000;
+            }
+            min = parseInt(min);
+            max = parseInt(max);
+        }
+
+        $(tab).push(min).push(max);
+
+        console.log(tab);
+        return tab;
+    }
+
+    // function getBrands() {
+    //     var h3Element = $("#brand-title");
+    //     var liElements = h3Element.next().children();
+    //     var tab = [];
+    //
+    //     liElements.each(function(index, element) {
+    //         if ($(element).hasClass("checked")) {
+    //             // console.log($(element).data("value"));
+    //             $(tab).push($(element).data("value"));
+    //         }
+    //     });
+    //     console.log(tab);
+    //     return tab;
+    // }
+    //
+    // function getSex() {
+    //     var h3Element = $("#sex-title");
+    //     var liElements = h3Element.next().children();
+    //     var tab = [];
+    //
+    //     liElements.each(function(index, element) {
+    //         if ($(element).hasClass("checked")) {
+    //             // console.log($(element).data("value"));
+    //             $(tab).push($(element).data("value"));
+    //         }
+    //     });
+    //     console.log(tab);
+    //     return tab;
+    // }
+
+    // function getColors() {
+    //     var h3Element = $("#color-title");
+    //     var liElements = h3Element.next().children();
+    //     var tab = [];
+    //
+    //     liElements.each(function(index, element) {
+    //         if ($(element).hasClass("checked")) {
+    //             // console.log($(element).data("value"));
+    //             $(tab).push($(element).data("value"));
+    //         }
+    //     });
+    //     console.log(tab);
+    //     return tab;
+    // }
+    //
+    // function getStraps() {
+    //     var h3Element = $("#strap-title");
+    //     var liElements = h3Element.next().children();
+    //     var tab = [];
+    //
+    //     liElements.each(function(index, element) {
+    //         if ($(element).hasClass("checked")) {
+    //             // console.log($(element).data("value"));
+    //             $(tab).push($(element).data("value"));
+    //         }
+    //     });
+    //     console.log(tab);
+    //     return tab;
+    // }
+    //
+    // function getMechs() {
+    //     var h3Element = $("#mechanism-title");
+    //     var liElements = h3Element.next().children();
+    //     var tab = [];
+    //
+    //     liElements.each(function(index, element) {
+    //         if ($(element).hasClass("checked")) {
+    //             // console.log($(element).data("value"));
+    //             $(tab).push($(element).data("value"));
+    //         }
+    //     });
+    //     console.log(tab);
+    //     return tab;
+    // }
+    //
+    // function getWproofs() {
+    //     var h3Element = $("#waterproof-title");
+    //     var liElements = h3Element.next().children();
+    //     var tab = [];
+    //
+    //     liElements.each(function(index, element) {
+    //         if ($(element).hasClass("checked")) {
+    //             // console.log($(element).data("value"));
+    //             $(tab).push($(element).data("value"));
+    //         }
+    //     });
+    //     console.log(tab);
+    //     return tab;
+    // }
+
+
+    // funkcja sparawdzająca czy jakaś kategoria filtra jest zanaczona
+    function noCategoryIsSelected() {
+        var categories = $(".category-title");
+
+        categories.each(function(index, category) {
+            if ($(category).hasClass("checked")) {
+                console.log("zaznaczony");
+                return false;
+            }
+        });
+        return true;
+    }
+
+    // funkcja filtrująca produkty
+    function filterProducts() {
+        var productMatches = false;
+
+        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
+        brandsArray = getCatagoryValues($("#brand-title"));
+        sexArray = getCatagoryValues($("#sex-title"));
+        pricesArray = getPrices();
+        colorsArray = getCatagoryValues($("#color-title"));
+        strapsArray = getCatagoryValues($("#strap-title"));
+        mechArray = getCatagoryValues($("#mechanism-title"));
+        wproofArray = getCatagoryValues($("#waterproof-title"));
+
+        if (noCategoryIsSelected()) {
+
+        }
+
+        // Pętla po produktach
+        for (var i = 0; i < products.length; i++) {
+            if (brandMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+            if (sexMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+            if (priceMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+            if (colorMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+            if (strapMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+            if (mechanismMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+            if (waterproofMatches(products[i])) {
+                productMatches = true;
+                break;
+            }
+        }
+
+        if (productMatches) {
+            $(products[i]).removeClass("hidden");
+        } else {
+            $(products[i]).addClass("hidden");
+        }
+    }
+
+
+    function brandMatches(product) {
+        
+    }
+    function sexMatches(product) {
+
+    }
+    function priceMatches(product) {
+
+    }
+    function colorMatches(product) {
+
+    }
+    function strapMatches(product) {
+
+    }
+    function mechanismMatches(product) {
+
+    }
+    function waterproofMatches(product) {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // funkcja filtrująca po marce
     function brandFilter() {
