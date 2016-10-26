@@ -150,6 +150,11 @@ html, body {
     padding: 1rem;
 }
 
+.nav {
+    @include greaterThenMobile {
+        flex: 0 1 70%;
+    }
+}
 .nav-ul {
     display:flex;
     // flex-direction: row;
@@ -255,13 +260,31 @@ html, body {
     justify-content: center;
 }
 
+.product {
+    background-color: white;
+    margin: 1rem;
+    border: 0.3rem solid black;
+}
+
 .product img {
     width: 180px;
     max-width: 90vw;
     height: auto;
+    line-height: 0;
+    font-size: 0;
     @include greaterThenMobile {
         width: 220px;
     }
+}
+
+.product-descr {
+    padding-left: 1rem;
+
+}
+
+.product-descr p {
+    font-size: 1.1rem;
+    margin: 0.3rem;
 }
 
 input {
@@ -286,3 +309,12 @@ input {
 //     }
 //
 // }
+
+.absolute {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

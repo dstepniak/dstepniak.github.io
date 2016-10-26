@@ -137,12 +137,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // Obsługa filtra cena
     $("input").on("change", function() {
+
         var li = $(".price");
+        console.log(li);
 
         $(li).removeClass("checked"); // usunięcie zaznaczenia wartośći min i max
 
         $(".min-price").attr("data-value", $("#min").val()); // przypisanie wartości inputa do data set
         $(".max-price").attr("data-value", $("#max").val()); // przypisanie wartości inputa do data set
+
 
         $(".price").each(function(index, value) {
             if ($(value).attr("data-value") !== "") {  // jeżeli data set jest ustawiony
@@ -242,29 +245,58 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         var li = $(value);
                         // console.log(category);
                         // console.log(categoryVal);
-                        $(products).each(function(index, value) { // pętla przez wszystkie produkty
-                            // console.log($(value));
+                        $(products).each(function(index, product) { // pętla przez wszystkie produkty
+                            console.log($(product));
                             // console.log(category);
-                            // console.log($(value).data(category));
+                            console.log($(product).data(category));
                             // console.log(categoryVal);
-                            if (category === "price") {
-                                if ((($(value).data(category) <= categoryVal) && $(li).hasClass("max-price"))) {
-                                    console.log($(value).data(category));
-                                    $(value).removeClass("hidden"); // pokazuje produkty
-                                }
-                                else if ((($(value).data(category) >= categoryVal) && $(li).hasClass("min-price"))) {
 
-                                    $(value).removeClass("hidden"); // pokazuje produkty
+                            // Pierwsze filtrowanie (bez ceny) - pokazuje pridukty spełniające warunki filtrowania
+                            if ((category !== "price") && ($(product).data(category) === categoryVal)) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
+                                        $(product).removeClass("hidden"); // pokazuje produkty
+                            }
+
+                            // Drugie filtrowanie (cena) - spośród odfiltrowanych ukrywa prodkty, które nie spełniają warunków
+                            if ((category === "price") && !($(product).hasClass("hidden"))) {
+                                // console.log("produkt" + $(product).data(category));
+                                // console.log("zaznaczony" + categoryVal);
+                                // if(($(product).data(category) <= )
+
+                                // console.log($(".min-price").attr("data-value"));
+                                // console.log($(".max-price").attr("data-value"));
+                                var min = $(".min-price").attr("data-value");
+                                var max = $(".max-price").attr("data-value");
+                                if (min === "") {
+                                    min = 0;
+                                }
+                                if (max == "") {
+                                    max = 100000;
+                                }
+                                if ( ($(product).data(category) > max) && ($(product).data(category) < min) ) {
+
+                                    $(product).addClass("hidden"); // ukrywa produkty, które nie spełniają warunków filtra
                                 }
 
-                                // if ((($(value).data(category) >= categoryVal) && $(li).hasClass("min-price")) &&  (($(value).data(category) <= categoryVal) && $(li).hasClass("max-price")) ) {
-                                //     $(value).removeClass("hidden"); // pokazuje produkty
+
+
+
+                                // if ((($(product).data(category) <= categoryVal) && $(li).hasClass("max-price"))) {
+                                //
+                                //     $(product).removeClass("hidden"); // pokazuje produkty
+                                // }
+                                // else if ((($(product).data(category) >= categoryVal) && $(li).hasClass("min-price"))) {
+                                //
+                                //     $(product).removeClass("hidden"); // pokazuje produkty
+                                // }
+
+                                // if ((($(product).data(category) >= categoryVal) && $(li).hasClass("min-price")) &&  (($(product).data(category) <= categoryVal) && $(li).hasClass("max-price")) ) {
+                                //     $(product).removeClass("hidden"); // pokazuje produkty
                                 // }
                             }
-                            else if ($(value).data(category) === categoryVal) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
-                                    $(value).removeClass("hidden"); // pokazuje produkty
-
-                            }
+                            // else if ($(product).data(category) === categoryVal) { // jeżeli wartość kategorii produktu pobrana z data set, jest równa zaznaczonej kategorii
+                            //         $(product).removeClass("hidden"); // pokazuje produkty
+                            //
+                            // }
 
                         });
                     }
