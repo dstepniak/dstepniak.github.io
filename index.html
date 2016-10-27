@@ -47,7 +47,7 @@
                 <h3 class="filter-btn-title">Filtruj produkty</h3>
             </div>
             <div class="filter">
-                <div class="category">
+                <div id="brand" class="category">
                     <h3 id="brand-title" class="category-title" data-category="brand">Marki</h3>
                     <ul class="values-list">
                         <li class="values" data-category="brand" data-value="brand1">Marka 1</li>
@@ -55,21 +55,21 @@
                         <li class="values" data-category="brand" data-value="brand3">Marka 3</li>
                     </ul>
                 </div>
-                <div class="category">
+                <div id="sex" class="category">
                     <h3 id="sex-title" class="category-title" data-category="sex">Damski/Męski</h3>
                     <ul class="values-list">
                         <li class="values" data-category="sex" data-value="female">Damski</li>
                         <li class="values" data-category="sex" data-value="male">Męski</li>
                     </ul>
                 </div>
-                <div class="category">
+                <div id="price" class="category">
                     <h3 id="price-title" class="category-title" data-category="price">Cena</h3>
                     <ul class="values-list">
                         <li class="values price min-price" data-category="price" data-value=""><label>Cena minimalna: <input id="min" type="number" name="min" value=""></label></li>
                         <li class="values price max-price" data-category="price" data-value=""><label>Cena maksymalna: <input id="max" type="number" name="max" value=""></label></li>
                     </ul>
                 </div>
-                <div class="category">
+                <div id="color" class="category">
                     <h3 id="color-title" class="category-title" data-category="color">Kolor</h3>
                     <ul class="values-list">
                         <li class="values" data-category="color" data-value="white">Biały</li>
@@ -80,7 +80,7 @@
                         <li class="values" data-category="color" data-value="golden">Złoty</li>
                     </ul>
                 </div>
-                <div class="category">
+                <div id="strap" class="category">
                     <h3 id="strap-title" class="category-title" data-category="strap">Pasek</h3>
                     <ul class="values-list">
                         <li class="values" data-category="strap" data-value="leather">Skóra</li>
@@ -88,14 +88,14 @@
                         <li class="values" data-category="strap" data-value="steel">Stal</li>
                     </ul>
                 </div>
-                <div class="category">
+                <div id="mechanism" class="category">
                     <h3 id="mechanism-title" class="category-title" data-category="mechanism">Mechanizm</h3>
                     <ul class="values-list">
                         <li class="values" data-category="mechanism" data-value="quarc">Kwarcowy</li>
                         <li class="values" data-category="mechanism" data-value="mech">Mechaniczny</li>
                     </ul>
                 </div>
-                <div class="category">
+                <div id="waterproof" class="category">
                     <h3 id="waterproof-title" class="category-title" data-category="waterproff">Wodoszczelność</h3>
                     <ul class="values-list">
                         <li class="values" data-category="waterproof" data-value="30m">30m</li>
@@ -103,12 +103,15 @@
                         <li class="values" data-category="waterproof" data-value="100m">100m</li>
                     </ul>
                 </div>
+                <div id="reset-btn" class="reset-btn">
+                    <h3 class="reset-btn-title">Wyczyść filtr</h3>
+                </div>
             </div>
         </section>
         <main class="main">
 
         	<div class="gallery">
-                
+
                 <!-- MALE MBW01-->
                 <div class="product" data-brand="brand1" data-sex="male" data-price="900" data-color="blue" data-strap="steel" data-mechanism="quarc" data-waterproof="30m">
                     <figure><img src="images/200x200/mbw01.jpg" alt="zegarek" /></figure>
