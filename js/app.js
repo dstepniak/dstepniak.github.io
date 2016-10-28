@@ -7,19 +7,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         function WidthChange(mediaQuery) {
             if(mediaQuery.matches) {
-                // console.log('yes');
                 hideNav(navUl);
                 turnOnNavMobile();
-                // showBtn();
                 showBtn(button);
                 showBtn(filterBtn);
                 hideNav(filter);
             }
             else {
-                // console.log('no');
                 showNav(navUl);
                 turnOffNavMobile();
-                // hideButton();
                 hideButton(button);
                 hideButton(filterBtn);
                 showNav(filter);
@@ -28,32 +24,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-
     var button = document.querySelector('.nav-button');
     var nav = document.querySelector('.nav');
     var navUl = document.querySelector('.nav-ul');
     var filterBtn = document.getElementById('filter-btn');
     var filter = document.querySelector('.filter');
-    // console.log(filter);
 
     function showNav(nav) {
-        // var navUl = document.querySelector('.nav-ul');
         nav.classList.remove("hidden-nav");
     }
 
     function hideNav(nav) {
-        // var navUl = document.querySelector('.nav-ul');
         nav.classList.add("hidden-nav");
     }
 
-
-    // function showBtn() {
-    //     button.classList.remove("hidden-btn");
-    // }
-    //
-    // function hideButton() {
-    //     button.classList.add("hidden-btn");
-    // }
     function showBtn(btn) {
         btn.classList.remove("hidden-btn");
 
@@ -64,72 +48,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function turnOnNavMobile() {
-        // var navUl = document.querySelector('.nav-ul');
         navUl.classList.add("nav-mobile");
     }
 
     function turnOffNavMobile() {
-        // var navUl = document.querySelector('.nav-ul');
         navUl.classList.remove("nav-mobile");
     }
 
 
     function toggleVisibilityOfNav() {
-        // var navUl = document.querySelector('.nav-ul');
         navUl.classList.toggle('hidden-nav');
     }
-
-    // function toggleVisibilityOfFilter() {
-    //     filter.classList.toggle('hidden-nav');
-    // }
 
     // Rozsuwanie menu w wersji mobile
     button.addEventListener('click', toggleVisibilityOfNav);
 
-    // // Rozsuwanie filtra w wersji mobile
-    // filterBtn.addEventListener('click', toggleVisibilityOfFilter);
-
-
-
-    // Wersja bez użycia toggle dla classList - rozpisane warunki włączenia i wyłączenia menu
-    // button.addEventListener('click', function(event) {
-    //
-    //     var ulClassList = navUl.classList;
-    //
-    //     var navIsHidden = false;
-    //     for (var i = 0; i < ulClassList.length; i++) {
-    //         // console.log(ulClassList[i]);
-    //         if (ulClassList[i] == "hidden-nav") {
-    //             console.log("navIsHidden");
-    //             navIsHidden = true;
-    //             break;
-    //         }
-    //     }
-    //     if (navIsHidden) {
-    //         showNav();
-    //     }
-    //     else {
-    //         hideNav();
-    //     }
-    // });
 
     // Wywołanie funkcji
     test_match_media_with_listener();
-    // _btnMenuInit();
 
 
 // ===============================================================
 
-    // var products = $(".product");
-    // var filterIsRunning = false;
-
     // Zasunięcie pól filtra
     function hideFilterValues() {
-        // console.log($(".values-list"));
         $(".values-list").hide(0);
     }
 
-    // console.log($(".category"));
     // Rozsuwanie pól filtra
     function filterSlideHandler() {
         $(".category-title").on("click", function() {
@@ -197,97 +142,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return tab;
     }
 
-    // function getBrands() {
-    //     var h3Element = $("#brand-title");
-    //     var liElements = h3Element.next().children();
-    //     var tab = [];
-    //
-    //     liElements.each(function(index, element) {
-    //         if ($(element).hasClass("checked")) {
-    //             // console.log($(element).data("value"));
-    //             $(tab).push($(element).data("value"));
-    //         }
-    //     });
-    //     console.log(tab);
-    //     return tab;
-    // }
-    //
-    // function getSex() {
-    //     var h3Element = $("#sex-title");
-    //     var liElements = h3Element.next().children();
-    //     var tab = [];
-    //
-    //     liElements.each(function(index, element) {
-    //         if ($(element).hasClass("checked")) {
-    //             // console.log($(element).data("value"));
-    //             $(tab).push($(element).data("value"));
-    //         }
-    //     });
-    //     console.log(tab);
-    //     return tab;
-    // }
-
-    // function getColors() {
-    //     var h3Element = $("#color-title");
-    //     var liElements = h3Element.next().children();
-    //     var tab = [];
-    //
-    //     liElements.each(function(index, element) {
-    //         if ($(element).hasClass("checked")) {
-    //             // console.log($(element).data("value"));
-    //             $(tab).push($(element).data("value"));
-    //         }
-    //     });
-    //     console.log(tab);
-    //     return tab;
-    // }
-    //
-    // function getStraps() {
-    //     var h3Element = $("#strap-title");
-    //     var liElements = h3Element.next().children();
-    //     var tab = [];
-    //
-    //     liElements.each(function(index, element) {
-    //         if ($(element).hasClass("checked")) {
-    //             // console.log($(element).data("value"));
-    //             $(tab).push($(element).data("value"));
-    //         }
-    //     });
-    //     console.log(tab);
-    //     return tab;
-    // }
-    //
-    // function getMechs() {
-    //     var h3Element = $("#mechanism-title");
-    //     var liElements = h3Element.next().children();
-    //     var tab = [];
-    //
-    //     liElements.each(function(index, element) {
-    //         if ($(element).hasClass("checked")) {
-    //             // console.log($(element).data("value"));
-    //             $(tab).push($(element).data("value"));
-    //         }
-    //     });
-    //     console.log(tab);
-    //     return tab;
-    // }
-    //
-    // function getWproofs() {
-    //     var h3Element = $("#waterproof-title");
-    //     var liElements = h3Element.next().children();
-    //     var tab = [];
-    //
-    //     liElements.each(function(index, element) {
-    //         if ($(element).hasClass("checked")) {
-    //             // console.log($(element).data("value"));
-    //             $(tab).push($(element).data("value"));
-    //         }
-    //     });
-    //     console.log(tab);
-    //     return tab;
-    // }
-
-
     // funkcja sparawdzająca czy jakaś kategoria filtra jest zanaczona
     function noCategoryIsSelected() {
         var categories = $(".category-title");
@@ -298,103 +152,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 return false;
             }
         }
-        // categories.each(function(index, category) {
-        //     if ($(category).hasClass("checked")) {
-        //         // console.log($(category).hasClass("checked"));
-        //         return false;
-        //     }
-        // });
         return true;
     }
-
-    // // funkcja filtrująca produkty
-    // function filterProducts() {
-    //     var productMatches = false;
-    //
-    //     // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-    //     brandsArray = getCatagoryValues($("#brand-title"));
-    //     sexArray = getCatagoryValues($("#sex-title"));
-    //     pricesArray = getPrices();
-    //     colorsArray = getCatagoryValues($("#color-title"));
-    //     strapsArray = getCatagoryValues($("#strap-title"));
-    //     mechArray = getCatagoryValues($("#mechanism-title"));
-    //     wproofArray = getCatagoryValues($("#waterproof-title"));
-    //
-    //
-    //     if (noCategoryIsSelected()) {
-    //         $(products).removeClass("hidden");
-    //     } else {
-    //         // Pętla po produktach
-    //         for (var i = 0; i < products.length; i++) {
-    //             // console.log(brandMatches(products[i]));
-    //
-    //             filterBrand(products[i]);
-    //             filterSex(products[i]);
-    //             filterPrice(products[i]);
-    //             filterColor(products[i]);
-    //             filterStrap(products[i]);
-    //             filterMechanism(products[i]);
-    //             filterWaterproof(products[i]);
-    //
-    //             // if (brandMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //             // if (sexMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //             // if (priceMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //             // if (colorMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //             // if (strapMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //             // if (mechanismMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //             // if (waterproofMatches(products[i])) {
-    //             //     $(products[i]).removeClass("hidden");
-    //             // } else {
-    //             //     $(products[i]).addClass("hidden");
-    //             //     // productMatches = true;
-    //             //     // break;
-    //             // }
-    //         }
-    //
-    //         // if (productMatches) {
-    //         //     $(products[i]).removeClass("hidden");
-    //         // } else {
-    //         //     $(products[i]).addClass("hidden");
-    //         // }
-    //     }
-    // }
-
 
 
     // // funkcja filtrująca markę - jeśli data-brand produktu zgadza się z którąś wartością kategorii brand, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
@@ -448,37 +207,62 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //     // }
     // }
 
+    // funkcja sprawdzająca jakie kategorie zostały zaznaczone, zwraca tablicę z elementami h3 (tytuł kategorii)
+    function selectedCategories() {
+        var categories = $(".category-title");
+        var tab = [];
+        for (var i = 0; i < categories.length; i++) {
+            if ($(categories[i]).hasClass("checked")) {
+                tab.push(categories[i]);
+            }
+        }
+        return tab;
+    }
 
 
     // pętla dla brand
     function loopForBrand() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        var p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        brandsArray = getCatagoryValues($("#brand-title"));
-        // sexArray = getCatagoryValues($("#sex-title"));
-        // pricesArray = getPrices();
-        // colorsArray = getCatagoryValues($("#color-title"));
-        // strapsArray = getCatagoryValues($("#strap-title"));
-        // mechArray = getCatagoryValues($("#mechanism-title"));
-        // wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   !!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        } else {
+            p = products;
+        }
 
+
+        for (var i = 0; i < tab.length; i++) {
+            if ((tab[i]).dataset.category !== "brand") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+
+            // products = $(".product.selected");  // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
         } else {
-            // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
 
-                filterBrand(products[i]);
-                // filterSex(products[i]);
-                // filterPrice(products[i]);
-                // filterColor(products[i]);
-                // filterStrap(products[i]);
-                // filterMechanism(products[i]);
-                // filterWaterproof(products[i]);
+            // Pętla po produktach
+            for (var i = 0; i < p.length; i++) {  // zmieniam products na p
+                // console.log(brandMatches(p[i]));
+
+                filterBrand(p[i]); // zmieniam priducts na p
+                // products = $(".product");  // !!!!!!!!!!! Nadpisanie warotści zmiennej
             }
         }
     }
@@ -486,32 +270,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // pętla dla sex
     function loopForSex() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        // brandsArray = getCatagoryValues($("#brand-title"));
-        sexArray = getCatagoryValues($("#sex-title"));
-        // pricesArray = getPrices();
-        // colorsArray = getCatagoryValues($("#color-title"));
-        // strapsArray = getCatagoryValues($("#strap-title"));
-        // mechArray = getCatagoryValues($("#mechanism-title"));
-        // wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   // !!!!!!!!!!!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        } else {
+            p = products;
+        }
 
+        for (var i = 0; i < tab.length; i++) {
+            if ((tab[i]).dataset.category !== "sex") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
         } else {
             // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
+            for (var i = 0; i < p.length; i++) { // zmieniam products na p
+                // console.log(brandMatches(p[i]));
 
-                // filterBrand(products[i]);
-                filterSex(products[i]);
-                // filterPrice(products[i]);
-                // filterColor(products[i]);
-                // filterStrap(products[i]);
-                // filterMechanism(products[i]);
-                // filterWaterproof(products[i]);
+                filterSex(p[i]); // zmieniam products na p
             }
         }
     }
@@ -519,33 +312,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // pętla dla price
     function loopForPrice() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        // brandsArray = getCatagoryValues($("#brand-title"));
-        // sexArray = getCatagoryValues($("#sex-title"));
-        pricesArray = getPrices();
-        // colorsArray = getCatagoryValues($("#color-title"));
-        // strapsArray = getCatagoryValues($("#strap-title"));
-        // mechArray = getCatagoryValues($("#mechanism-title"));
-        // wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   // !!!!!!!!!!!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        }
 
+        for (var i = 0; i < tab.length; i++) {
+            if ((tab[i]).dataset.category !== "price") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
         } else {
             // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
+            for (var i = 0; i < p.length; i++) { // zmieniam products na p
 
-                // filterBrand(products[i]);
-                // filterSex(products[i]);
-
-                filterPrice(products[i]);
-                // filterColor(products[i]);
-                // filterStrap(products[i]);
-                // filterMechanism(products[i]);
-                // filterWaterproof(products[i]);
+                filterPrice(p[i]); // zmieniam products na p
+                // products = $(".product");   // !!!!!!!!!! Nadpisanie wartości zmiennj
             }
         }
     }
@@ -553,65 +352,84 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // pętla dla color
     function loopForColor() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        // brandsArray = getCatagoryValues($("#brand-title"));
-        // sexArray = getCatagoryValues($("#sex-title"));
-        // pricesArray = getPrices();
-        colorsArray = getCatagoryValues($("#color-title"));
-        // strapsArray = getCatagoryValues($("#strap-title"));
-        // mechArray = getCatagoryValues($("#mechanism-title"));
-        // wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   // !!!!!!!!!!!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        }
 
+        for (var i = 0; i < tab.length; i++) {
+            if ((tab[i]).dataset.category !== "color") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
+
+            for (var i = 0; i < p.length; i++) {  // zmieniam products na p
+
+                filterColor(p[i], ".product"); // zmieniam products na p
+            }
+
         } else {
             // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
+            for (var i = 0; i < p.length; i++) {  // zmieniam products na p
 
-                // filterBrand(products[i]);
-                // filterSex(products[i]);
-                // filterPrice(products[i]);
-                filterColor(products[i]);
-                // filterStrap(products[i]);
-                // filterMechanism(products[i]);
-                // filterWaterproof(products[i]);
+                filterColor(p[i], ".selected");  // zmieniam products na p
             }
         }
+        // products = $(".product");   // !!!!!!!!!!!! Nadpisanie wartości zmiennej
     }
 
     // pętla dla strap
     function loopForStrap() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        // brandsArray = getCatagoryValues($("#brand-title"));
-        // sexArray = getCatagoryValues($("#sex-title"));
-        // pricesArray = getPrices();
-        // colorsArray = getCatagoryValues($("#color-title"));
-        strapsArray = getCatagoryValues($("#strap-title"));
-        // mechArray = getCatagoryValues($("#mechanism-title"));
-        // wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   // !!!!!!!!!!!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        }
 
+        for (var i = 0; i < tab.length; i++) {
+            if ((tab[i]).dataset.category !== "strap") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
         } else {
             // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
+            for (var i = 0; i < p.length; i++) {  // zmieniam products na p
 
-                // filterBrand(products[i]);
-                // filterSex(products[i]);
-                // filterPrice(products[i]);
-                // filterColor(products[i]);
-                filterStrap(products[i]);
-                // filterMechanism(products[i]);
-                // filterWaterproof(products[i]);
+                filterStrap(p[i]);  // zmieniam products na p
             }
         }
     }
@@ -619,32 +437,38 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // pętla dla mechanism
     function loopForMechanism() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        // brandsArray = getCatagoryValues($("#brand-title"));
-        // sexArray = getCatagoryValues($("#sex-title"));
-        // pricesArray = getPrices();
-        // colorsArray = getCatagoryValues($("#color-title"));
-        // strapsArray = getCatagoryValues($("#strap-title"));
-        mechArray = getCatagoryValues($("#mechanism-title"));
-        // wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   // !!!!!!!!!!!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        }
 
+        for (var i = 0; i < tab.length; i++) {
+            if ((tab[i]).dataset.category !== "mechanism") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
         } else {
             // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
+            for (var i = 0; i < p.length; i++) { // zmieniam products na p
 
-                // filterBrand(products[i]);
-                // filterSex(products[i]);
-                // filterPrice(products[i]);
-                // filterColor(products[i]);
-                // filterStrap(products[i]);
-                filterMechanism(products[i]);
-                // filterWaterproof(products[i]);
+                filterMechanism(p[i]);  // zmieniam products na p
             }
         }
     }
@@ -652,32 +476,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // pętla dla waterproof
     function loopForWaterproof() {
         var productMatches = false;
+        var tab = selectedCategories();
+        var otherCategoryIsChecked = false;
+        p = products;
 
-        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
-        // brandsArray = getCatagoryValues($("#brand-title"));
-        // sexArray = getCatagoryValues($("#sex-title"));
-        // pricesArray = getPrices();
-        // colorsArray = getCatagoryValues($("#color-title"));
-        // strapsArray = getCatagoryValues($("#strap-title"));
-        // mechArray = getCatagoryValues($("#mechanism-title"));
-        wproofArray = getCatagoryValues($("#waterproof-title"));
+        if (tab.length > 1) {
+            filterIsRunning = true;
+            // products = $(".product.selected");   // !!!!!!!!!!!!!! Nadpisanie wartości zmiennej
+            p = $(".product.selected");
+        }
 
+        for (var i = 0; i < tab.length; i++) {
+            console.log(tab[i]);
+            if ((tab[i]).dataset.category !== "waterproof") {
+                otherCategoryIsChecked = true;
+            }
+
+        }
+        if (otherCategoryIsChecked) {
+            p = $(".product.selected");
+        } else {
+            // products = $(".product"); // !!!!!!!!!!!!! Nadpisanie wartości zmiennj
+            p = products;
+        }
 
         if (noCategoryIsSelected()) {
             $(products).removeClass("hidden");
             $(products).removeClass("selected");
+            filterIsRunning = false;
         } else {
             // Pętla po produktach
-            for (var i = 0; i < products.length; i++) {
-                // console.log(brandMatches(products[i]));
+            for (var i = 0; i < p.length; i++) { // zmieniam products na p
 
-                // filterBrand(products[i]);
-                // filterSex(products[i]);
-                // filterPrice(products[i]);
-                // filterColor(products[i]);
-                // filterStrap(products[i]);
-                // filterMechanism(products[i]);
-                filterWaterproof(products[i]);
+                filterWaterproof(p[i]); // zmieniam products na p
             }
         }
     }
@@ -685,7 +516,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // funkcja filtrująca markę - jeśli data-brand produktu zgadza się z którąś wartością kategorii brand, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
     function filterBrand(product) {
         var matches = false;
+        // Pobranie do tablicy zaznaczonych wartości kategorii z filtra
+        brandsArray = getCatagoryValues($("#brand-title"));
         // $(product).removeClass("selected");
+
         if (brandsArray.length !== 0) {
             for (var i = 0; i < brandsArray.length; i++) {
                 if (brandsArray[i] === $(product).data("brand")) {
@@ -697,17 +531,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 $(product).addClass("selected");
             } else {
                 $(product).addClass("hidden");
+                $(product).removeClass("selected");
             }
         }
-        // else {
-        //     $(product).addClass("selected");
-        // }
+        else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
+        }
     }
 
 
     // funkcja filtrująca płeć - jeśli data-sex produktu zgadza się z którąś wartością kategorii sex, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
     function filterSex(product) {
         var matches = false;
+        // Pobranie do tablicy zaznaczonych wartości kategorii z filtra
+        sexArray = getCatagoryValues($("#sex-title"));
+
         if (sexArray.length !== 0) {
             for (var i = 0; i < sexArray.length; i++) {
                 if (sexArray[i] === $(product).data("sex")) {
@@ -717,16 +556,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             if (matches) {
                 $(product).removeClass("hidden");
+                $(product).addClass("selected");
             } else {
                 $(product).addClass("hidden");
                 $(product).removeClass("selected");
             }
+
+        } else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
         }
     }
 
     // funkcja filtrująca cenę - jeśli data-sex produktu zgadza jest większy do wartości min i mniejszy od wartości max, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
     function filterPrice(product) {
         var matches = false;
+        pricesArray = getPrices();
+
         if (pricesArray.length !== 0) {
             var min = pricesArray[0];
             var max = pricesArray[1];
@@ -734,19 +580,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if ( ($(product).data("price") <= max) && ($(product).data("price") >= min) ) {
                 matches = true;
             }
-        }
-        if (matches) {
-            $(product).removeClass("hidden");
-        } else {
-            $(product).addClass("hidden");
-            $(product).removeClass("selected");
+
+            if (matches) {
+                $(product).removeClass("hidden");
+                $(product).addClass("selected");
+            } else {
+                $(product).addClass("hidden");
+                $(product).removeClass("selected");
+            }
+        }  else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
         }
     }
 
 
     // funkcja filtrująca kolor - jeśli data-color produktu zgadza się z którąś wartością kategorii color, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
-    function filterColor(product) {
+    function filterColor(product, selector) {
         var matches = false;
+        colorsArray = getCatagoryValues($("#color-title"));
+
         if (colorsArray.length !== 0) {
             for (var i = 0; i < colorsArray.length; i++) {
                 if (colorsArray[i] === $(product).data("color")) {
@@ -755,16 +608,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
             if (matches) {
                 $(product).removeClass("hidden");
+                $(product).addClass("selected");
             } else {
                 $(product).addClass("hidden");
                 $(product).removeClass("selected");
             }
+        } else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
         }
     }
 
     // funkcja filtrująca pasek - jeśli data-strap produktu zgadza się z którąś wartością kategorii strap, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
     function filterStrap(product) {
         var matches = false;
+        strapsArray = getCatagoryValues($("#strap-title"));
+
         if (strapsArray.length !== 0) {
             for (var i = 0; i < strapsArray.length; i++) {
                 if (strapsArray[i] === $(product).data("strap")) {
@@ -773,16 +632,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
             if (matches) {
                 $(product).removeClass("hidden");
+                $(product).addClass("selected");
             } else {
                 $(product).addClass("hidden");
                 $(product).removeClass("selected");
             }
+        } else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
         }
     }
 
     // funkcja filtrująca mechanizm - jeśli data-mechanism produktu zgadza się z którąś wartością kategorii mechanism, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
     function filterMechanism(product) {
         var matches = false;
+        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
+        mechArray = getCatagoryValues($("#mechanism-title"));
+
         if (mechArray.length !== 0) {
             for (var i = 0; i < mechArray.length; i++) {
                 if (mechArray[i] === $(product).data("mechanism")) {
@@ -791,16 +657,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
             if (matches) {
                 $(product).removeClass("hidden");
+                $(product).addClass("selected");
             } else {
                 $(product).addClass("hidden");
                 $(product).removeClass("selected");
             }
+        } else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
         }
     }
 
     // funkcja filtrująca wodoodporność - jeśli data-waterproof produktu zgadza się z którąś wartością kategorii waterproof, usuwa klasę hidden, jeżeli nie, nadaje produktowi klasę hidden
     function filterWaterproof(product) {
         var matches = false;
+        // Pobranie do tablic zaznaczonych wartości kategorii z filtra
+        wproofArray = getCatagoryValues($("#waterproof-title"));
+
         if (wproofArray.length !== 0) {
             for (var i = 0; i < wproofArray.length; i++) {
                 if (wproofArray[i] === $(product).data("waterproof")) {
@@ -809,135 +682,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
             if (matches) {
                 $(product).removeClass("hidden");
+                $(product).addClass("selected");
             } else {
                 $(product).addClass("hidden");
                 $(product).removeClass("selected");
             }
+        } else {
+            // $(product).addClass("selected");
+            // $(product).removeClass("hidden");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-    // // funkcja sprawdzająca, czy data-brand produktu zgadza się z którąś wartością kategorii brand
-    // function brandMatches(product) {
-    //     console.log(brandsArray.length);
-    //     if (brandsArray.length === 0) {
-    //         return true;
-    //     } else {
-    //         for (var i = 0; i < brandsArray.length; i++) {
-    //             if (brandsArray[i] === $(product).data("brand")) {
-    //                 return true;
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
-    //
-    // // funkcja sprawdzająca, czy data-sex produktu zgadza się z którąś wartością kategorii sex
-    // function sexMatches(product) {
-    //     // if (sexArray.length === 0) {
-    //     //     return true;
-    //     // } else {
-    //         for (var i = 0; i < sexArray.length; i++) {
-    //             if (sexArray[i] === $(product).data("sex")) {
-    //                 return true;
-    //             }
-    //         }
-    //     // }
-    //     return false;
-    // }
-    //
-    // // funkcja sprawdzająca, czy data-price produktu jest większe od podanej wartości min i miniejsze od max
-    // function priceMatches(product) {
-    //     // if (pricesArray.length === 0) {
-    //     //     return true;
-    //     // } else {
-    //         var min = pricesArray[0];
-    //         var max = pricesArray[1];
-    //         if ( ($(product).data("price") <= max) && ($(product).data("price") >= min) ) {
-    //                 return true;
-    //         }
-    //     // }
-    //     return false;
-    // }
-    //
-    // // funkcja sprawdzająca, czy data-color produktu zgadza się z którąś wartością kategorii color
-    // function colorMatches(product) {
-    //     // if (colorsArray.length === 0) {
-    //     //     return true;
-    //     // } else {
-    //         for (var i = 0; i < colorsArray.length; i++) {
-    //             if (colorsArray[i] === $(product).data("color")) {
-    //                 return true;
-    //             }
-    //         }
-    //     // }
-    //     return false;
-    // }
-    //
-    // // funkcja sprawdzająca, czy data-strap produktu zgadza się z którąś wartością kategorii strap
-    // function strapMatches(product) {
-    //     // if (strapsArray.length === 0) {
-    //     //     return true;
-    //     // } else {
-    //         for (var i = 0; i < strapsArray.length; i++) {
-    //             if (strapsArray[i] === $(product).data("strap")) {
-    //                 return true;
-    //             }
-    //         }
-    //     // }
-    //     return false;
-    // }
-    //
-    // // funkcja sprawdzająca, czy data-mechanism produktu zgadza się z którąś wartością kategorii mechanism
-    // function mechanismMatches(product) {
-    //     // if (mechArray.length === 0) {
-    //     //     return true;
-    //     // } else {
-    //         for (var i = 0; i < mechArray.length; i++) {
-    //             if (mechArray[i] === $(product).data("mechanism")) {
-    //                 return true;
-    //             }
-    //         }
-    //     // }
-    //     return false;
-    // }
-    //
-    // // funkcja sprawdzająca, czy data-waterproof produktu zgadza się z którąś wartością kategorii waterproof
-    // function waterproofMatches(product) {
-    //     // if (wproofArray.length === 0) {
-    //     //     return true;
-    //     // } else {
-    //         for (var i = 0; i < wproofArray.length; i++) {
-    //             if (wproofArray[i] === $(product).data("waterproof")) {
-    //                 return true;
-    //             }
-    //         }
-    //     // }
-    //     return false;
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // // funkcja filtrująca po marce
@@ -994,7 +748,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // funkcja filtrująca po płci
 
-
     // funkcja filtrująca po cenie
 
     // funkcja filtrująca po kolorze
@@ -1006,23 +759,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // funkcja filtrująca po wodoszczelności
 
     // funkcja sprawdzająca, która kategoria jest zaznaczona
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1069,19 +805,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
 
-    // console.log($(".values"));
-    // obsługa filtrów innych niż cena
-    // $(".values").on("click", function() {
-    //     // var noOptionIsChecked = true;
-    //     if (!$(this).hasClass("price")) {
-    //
-    //         $(this).toggleClass("checked"); // zaznaczenie lub odznaczenie opcji
-    //     }
-    //
-    //     checkCategory($(this)); // zaznaczenie/odznaczenie kategorii
-    //     filterProducts(); // wywołanie funkcji filtrowania produktów
-    //     // filterBrand();
-    // });
 
     // obsługa filtrów innych niż cena
     // event na kategorii brand
@@ -1159,43 +882,58 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         checkCategory($(this)); // zaznaczenie/odznaczenie kategorii
         loopForWaterproof(); // wywołanie funkcji filtrowania produktów
-
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // Czyszczenie filtra
     $("#reset-btn").on("click", function() {
-        var checked = $(".checked");
         $(products).removeClass("hidden");
         $(products).removeClass("selected");
-        checked.removeClass("checked");
+        $(".checked").removeClass("checked");
         filterIsRunning = false;
+        $(".values-list").slideUp();
+        $("#min").val("");
+        $("#max").val("");
     });
-
-
-
 
     // Rozsuwanie filtra w wersji mobile
     $(".filter-btn").on("click", function() {
         $(this).next().slideToggle();
     });
 
+    // funkcja pobierająca zaznaczone wartości kaegorii i zwracająca tablicę dwuwymiarową
+    function getCheckedValues() {
+        var tab = [];
+        $(".category-title").each(function(i, category) {
+            var liElements = $(this).next().children();
+            tab[i] = [];
+            liElements.each(function(j, value) {
+                if ($(value).hasClass("checked")) {
+                    tab[i].push(value);
+                }
+            });
+            // console.log(tab[i]);
+        });
+        console.log(tab);
+        return tab;
+    }
+
+    hideFilterValues();
+    filterSlideHandler();
+
+});
+
+    // obsługa filtrów innych niż cena
+    // $(".values").on("click", function() {
+    //     // var noOptionIsChecked = true;
+    //     if (!$(this).hasClass("price")) {
+    //
+    //         $(this).toggleClass("checked"); // zaznaczenie lub odznaczenie opcji
+    //     }
+    //
+    //     checkCategory($(this)); // zaznaczenie/odznaczenie kategorii
+    //     filterProducts(); // wywołanie funkcji filtrowania produktów
+    //     // filterBrand();
+    // });
 
     // filtrowanie produktów
     // function filterProducts() {
@@ -1250,18 +988,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //             $(products).removeClass("hidden"); // pokarz wszystkie produkty
     //     }
     // }
-
-
-
-
-
-
-
-
-
-
-
-
 
     // function filterProducts() {
     //     var values = $(".values");
@@ -1347,10 +1073,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //     }
     // }
 
-
-
-
-
     // var noCategoryIsChecked = true;
     // function filterProducts() {
     //     var values = $(".values");
@@ -1412,9 +1134,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // function hideAllProducts() {
     //
     // }
-
-    hideFilterValues();
-    filterSlideHandler();
-
-
-});

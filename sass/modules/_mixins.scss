@@ -1,0 +1,35 @@
+// @mixin smalltablet() {
+//     @media #{$tablet}{
+//         @content;
+//     }
+// }
+
+@mixin tablet() {
+    @media #{$tablet}{
+        @content;
+    }
+}
+
+@mixin desktop() {
+    @media #{$desktop}{
+        @content;
+    }
+}
+
+@mixin greaterThenMobile() {
+    @media #{$greaterThenMobile}{
+        @content;
+    }
+}
+
+// ================== przerobić mixin na gradient ==================
+@mixin liBorderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@function highten($value) {
+    @return 2px + $value;
+}

@@ -1,45 +1,5 @@
-// $mobile: "(max-width: 500px)";
-// $smalltablet: "(min-width: 500px) and (max-width: 767px)";
-$tablet: "(min-width: 768px) and (max-width: 1023px)";
-$desktop: "(min-width: 1024px)";
-$greaterThenMobile: "(min-width: 500px)";
-$font-size: 12px;
-
-// @mixin smalltablet() {
-//     @media #{$tablet}{
-//         @content;
-//     }
-// }
-
-@mixin tablet() {
-    @media #{$tablet}{
-        @content;
-    }
-}
-
-@mixin desktop() {
-    @media #{$desktop}{
-        @content;
-    }
-}
-
-@mixin greaterThenMobile() {
-    @media #{$greaterThenMobile}{
-        @content;
-    }
-}
-
-// ================== przerobić mixin na gradient ==================
-@mixin liBorderRadius($radius) {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    -ms-border-radius: $radius;
-    border-radius: $radius;
-}
-
-@function highten($value) {
-    @return 2px + $value;
-}
+@import "modules/_variables.scss";
+@import "modules/_mixins.scss";
 
 
 * {
@@ -242,15 +202,8 @@ html, body {
 //     color: red;
 // }
 
-.hidden-btn {
-    display: none;
-}
 
-.hidden-nav  {
-    display: none;
-}
-
-.hidden {
+.hidden, .hidden-nav, .hidden-btn {
     display: none;
 }
 
